@@ -7,6 +7,13 @@ type CliInstance = {
    * @param value - The value to print.
    */
   print: (...value: any[]) => void
+
+  /**
+   * Sends a question to the user using the cli interface.
+   * @param question - The question to ask a response to.
+   * @returns - The response given by the user.
+   */
+  question: (question: string) => Promise<string>
 }
 
 // The type of the cli interface library used.
