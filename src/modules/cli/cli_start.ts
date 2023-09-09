@@ -19,6 +19,10 @@ function cli_start(clear: boolean = true): CliInstance {
     constructor(intf: CliInterface) {
       this.interface = intf
     }
+
+    public print(...value: string[]) {
+      console.log(...value)
+    }
   })(rl)
 }
 
