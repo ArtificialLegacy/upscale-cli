@@ -1,5 +1,7 @@
 import type readline from 'readline'
 
+type CliInstance = {}
+
 type CliInterface = readline.Interface
 
-export type { CliInterface }
+export type { CliInstance, CliInterface }
