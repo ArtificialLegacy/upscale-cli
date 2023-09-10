@@ -61,7 +61,6 @@ class StateMachine {
    * @param to - The state to transition to.
    */
   public transition(to: number) {
-    console.log(this.states)
     if (!this.states[to]) throw `State of id ${to} does not exist.`
 
     if (this.current === -1) {
