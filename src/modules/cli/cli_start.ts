@@ -2,6 +2,7 @@ import readline from 'readline'
 
 import type { CliInstance, CliInterface } from './types/cli_interface'
 import cli_question from './functions/cli_question'
+import { CliQuestionOptions } from './types/cli_question_options'
 
 /**
  * Wrapper to create a cli interface. Currently uses the readline interface.
@@ -25,8 +26,11 @@ function cli_start(clear: boolean = true): CliInstance {
       console.log(...value)
     }
 
-    public async question(question: string): Promise<string> {
-      return cli_question(this.interface, question)
+    public async question(
+      question: string,
+      options: CliQuestionOptions = {},
+    ): Promise<string> {
+      return cli_question(this.interface, question, options)
     }
   })(rl)
 }

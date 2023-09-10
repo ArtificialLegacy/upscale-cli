@@ -1,4 +1,5 @@
 import type readline from 'readline'
+import type { CliQuestionOptions } from './cli_question_options'
 
 // The type structure for the interface wrapper class
 type CliInstance = {
@@ -13,7 +14,7 @@ type CliInstance = {
    * @param question - The question to ask a response to.
    * @returns - The response given by the user.
    */
-  question: (question: string) => Promise<string>
+  question: (question: string, options?: CliQuestionOptions) => Promise<string>
 }
 
 // The type of the cli interface library used.
