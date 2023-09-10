@@ -1,3 +1,7 @@
+/**
+ * Enum of ansi colors to make it easier to include in strings.
+ * Every usage of a color should be reset.
+ */
 enum CliColor {
   Reset = '\u001b[0m',
 
