@@ -5,7 +5,7 @@ import fs from 'fs'
  * @returns true if esrgan is installed, else false
  */
 function esrgan_verify(): boolean {
-  const exists = fs.existsSync(`${__dirname}/../esrgan/`)
+  const exists = fs.existsSync(`${global.__basedir}\\..\\esrgan-tool\\`)
 
   return exists
 }
