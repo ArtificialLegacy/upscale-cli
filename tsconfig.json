@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "target": "ESNext",
+    "module": "NodeNext",
+    "rootDirs": ["./src"],
+    "typeRoots": ["./src/env.d.ts", "./node_modules/@types"],
+    "baseUrl": "./src",
+    "outDir": "./build/",
+    "paths": {
+      "modules/*": ["modules/*"],
+    },
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "incremental": false,
+  }
+}
