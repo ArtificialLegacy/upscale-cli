@@ -6,7 +6,7 @@ import { State } from '../../state_machine'
  */
 const esrgan_fail = new State((_, cli) => {
   cli.print(
-    `${CliColor.Red}Cannot continue without esrgan, restart the program to install.${CliColor.Reset}`,
+    `\n${CliColor.Red}Cannot continue without esrgan, restart the program to attempt to install.${CliColor.Reset}\n`,
   )
   process.exit()
 })
