@@ -20,6 +20,7 @@ function state_init(cli: CliInstance): StateMachine {
 
   state.add_connection(CliState.ESRGAN_Verify, CliState.ESRGAN_Fail)
   state.add_connection(CliState.ESRGAN_Verify, CliState.ESRGAN_Download)
+  state.add_connection(CliState.ESRGAN_Download, CliState.ESRGAN_Fail)
 
   return state
 }

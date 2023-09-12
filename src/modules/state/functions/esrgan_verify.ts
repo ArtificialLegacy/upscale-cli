@@ -10,6 +10,7 @@ import CliState from '../constants/cli_state'
  */
 const esrgan_verify = new State(async (_, cli, transition) => {
   const esrganExists = verify()
+
   if (!esrganExists) {
     const shouldDownload = await cli.question(
       `${CliColor.Red}!${CliColor.Reset} Real-ESRGAN was not found. Would you like to download it? (${CliColor.Green}Y${CliColor.Reset}/${CliColor.Red}N${CliColor.Reset}) `,
