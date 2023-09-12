@@ -11,3 +11,8 @@ import { CliState, state_init } from './modules/state'
 
   state.transition(CliState.ESRGAN_Verify)
 })()
+
+declare global {
+  var __basedir: string
+}
+global.__basedir = __dirname
