@@ -69,7 +69,7 @@ class StateMachine {
       return
     }
 
-    if (!this.connections[this.current].includes(to))
+    if (!this.connections[this.current]?.includes(to))
       throw `State of id ${to} is not connected to ${this.current}`
 
     this.states[this.current].exit?.(to, this.cliInstance)
