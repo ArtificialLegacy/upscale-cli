@@ -36,6 +36,8 @@ const esrgan_download = new State(async (_, cli, transition) => {
 
     return transition(CliState.ESRGAN_Fail)
   }
+
+  transition(CliState.Landing_Menu)
 })
 
 export default esrgan_download

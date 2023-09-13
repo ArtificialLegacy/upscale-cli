@@ -10,20 +10,19 @@ import CliState from '../constants/cli_state'
  */
 const esrgan_verify = new State(async (_, cli, transition) => {
   const esrganExists = verify()
+  if (esrganExists) return transition(CliState.Landing_Menu)
 
-  if (!esrganExists) {
-    const shouldDownload = await cli.question(
-      `${CliColor.Red}!${CliColor.Reset} Real-ESRGAN was not found. Would you like to download it? (${CliColor.Green}Y${CliColor.Reset}/${CliColor.Red}N${CliColor.Reset}) `,
-      {
-        accepts: ['Y', 'N'],
-        default: 'N',
-        normalize: true,
-      },
-    )
+  const shouldDownload = await cli.question(
+    `${CliColor.Red}!${CliColor.Reset} Real-ESRGAN was not found. Would you like to download it? (${CliColor.Green}Y${CliColor.Reset}/${CliColor.Red}N${CliColor.Reset}) `,
+    {
+      accepts: ['Y', 'N'],
+      default: 'N',
+      normalize: true,
+    },
+  )
 
-    if (shouldDownload === 'N') return transition(CliState.ESRGAN_Fail)
-    if (shouldDownload === 'Y') return transition(CliState.ESRGAN_Download)
-  }
+  if (shouldDownload === 'N') return transition(CliState.ESRGAN_Fail)
+  if (shouldDownload === 'Y') return transition(CliState.ESRGAN_Download)
 })
 
 export default esrgan_verify
