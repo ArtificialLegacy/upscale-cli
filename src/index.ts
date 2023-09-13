@@ -1,8 +1,8 @@
 import { config as denv } from 'dotenv'
 denv()
 
-import { cli_start } from './modules/cli'
-import { CliState, state_init } from './modules/state'
+import { cli_start } from 'modules/cli'
+import { CliState, state_init } from 'modules/state'
 
 // used instead of top level await due to oddities with ts-node.
 ;(async () => {

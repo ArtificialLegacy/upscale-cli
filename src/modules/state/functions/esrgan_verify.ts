@@ -1,6 +1,6 @@
-import { State } from '../../state_machine'
-import { esrgan_verify as verify } from '../../esrgan'
-import { CliColor } from '../../cli'
+import { State } from 'modules/state_machine'
+import { esrgan_verify as verify } from 'modules/esrgan'
+import { CliColor } from 'modules/cli'
 import CliState from '../constants/cli_state'
 
 /**

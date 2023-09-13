@@ -1,5 +1,5 @@
-import { CliColor } from '../../cli'
-import { State } from '../../state_machine'
+import { CliColor } from 'modules/cli'
+import { State } from 'modules/state_machine'
 
 /**
  * The program state for when either the user rejects to install esrgan, or the download fails.

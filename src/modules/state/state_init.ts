@@ -1,6 +1,6 @@
 import CliState from './constants/cli_state'
-import { StateMachine } from '../state_machine'
-import type { CliInstance } from '../cli/types/cli_interface'
+import { StateMachine } from 'modules/state_machine'
+import type { CliInstance } from 'modules/cli/types/cli_interface'
 
 import esrgan_verify from './functions/esrgan_verify'
 import esrgan_fail from './functions/esrgan_fail'

@@ -1,4 +1,4 @@
-import type { CliInstance } from '../cli/types/cli_interface'
+import type { CliInstance } from 'modules/cli/types/cli_interface'
 import type State from './state'
 
 /**
