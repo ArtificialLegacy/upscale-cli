@@ -1,5 +1,5 @@
-import { CliInterface } from '../types/cli_interface'
-import { CliQuestionOptions } from '../types/cli_question_options'
+import type { CliInterface } from '../types/cli_interface'
+import type { CliQuestionOptions } from '../types/cli_question_options'
 
 /**
  * Prompts the user to provide an answer to a prompt.
