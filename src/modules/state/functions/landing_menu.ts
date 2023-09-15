@@ -5,13 +5,14 @@ import { State } from 'modules/state_machine'
  * The main menu that the user sees when they run the program.
  */
 const landing_menu = new State(async (_, cli) => {
+  cli.clear()
+
   const response = await cli.menu('Select task to perform:', [
     'Run Workload',
     'Manage Real-ESRGAN',
     'Exit',
   ])
 
-  cli.clear()
   cli.print(response)
 })
 
