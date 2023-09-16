@@ -165,7 +165,7 @@ class CliMenu {
    * Cleans up the cli menu when closing it.
    */
   private clean() {
-    process.stdin.removeListener('data', this.on_data)
+    process.stdin.removeAllListeners('data')
     process.stdin.setRawMode(false)
     process.stdin.pause()
     this.cli.cursor_show()
