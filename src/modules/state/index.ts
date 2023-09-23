@@ -1,2 +1,2 @@
 export { default as state_init } from './state_init'
-export { default as CliState } from './constants/cli_state'
+export type { CliState } from './types/cli_state'

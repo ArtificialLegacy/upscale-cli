@@ -1,5 +1,5 @@
 import type { CliInstance } from '../types/cli_interface'
-import { CliColor } from '..'
+import CliColor from '../constants/cli_color'
 
 /**
  * A class to create a menu for the user to select an option from.

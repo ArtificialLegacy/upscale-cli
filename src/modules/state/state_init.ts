@@ -1,4 +1,3 @@
-import CliState from './constants/cli_state'
 import { StateMachine } from 'modules/state_machine'
 import type { CliInstance } from 'modules/cli/types/cli_interface'
 
@@ -14,17 +13,12 @@ import landing_menu from './functions/landing_menu'
  */
 function state_init(cli: CliInstance): StateMachine {
   const state = new StateMachine(cli)
-
-  state.add_state(CliState.ESRGAN_Verify, esrgan_verify)
-  state.add_state(CliState.ESRGAN_Fail, esrgan_fail)
-  state.add_state(CliState.ESRGAN_Download, esrgan_download)
-  state.add_state(CliState.Landing_Menu, landing_menu)
-
-  state.add_connection(CliState.ESRGAN_Verify, CliState.ESRGAN_Fail)
-  state.add_connection(CliState.ESRGAN_Verify, CliState.ESRGAN_Download)
-  state.add_connection(CliState.ESRGAN_Download, CliState.ESRGAN_Fail)
-  state.add_connection(CliState.ESRGAN_Verify, CliState.Landing_Menu)
-  state.add_connection(CliState.ESRGAN_Download, CliState.Landing_Menu)
+    .add_state([esrgan_verify, esrgan_fail, esrgan_download, landing_menu])
+    .add_connection('esrgan_verify', 'esrgan_fail')
+    .add_connection('esrgan_verify', 'esrgan_download')
+    .add_connection('esrgan_download', 'esrgan_fail')
+    .add_connection('esrgan_verify', 'landing_menu')
+    .add_connection('esrgan_download', 'landing_menu')
 
   return state
 }
