@@ -24,11 +24,15 @@ class StateMachine {
     this.cliInstance = cli
 
     // used to make sure state machine methods stay binded when passed into state functions.
-    Object.getOwnPropertyNames(StateMachine.prototype).forEach((key) => {
-      if (key !== 'constructor') {
-        // ignored bc typescript doesn't understand accessing 'this' with strings
-        // @ts-ignore
-        this[key] = this[key].bind(this)
+    const bindProps = Object.getOwnPropertyNames(StateMachine.prototype) as (
+      | keyof StateMachine
+      | 'constructor'
+    )[]
+
+    bindProps.forEach((key) => {
+      const value = this[key]
+      if (key !== 'constructor' && typeof value === 'function') {
+        this[key] = value.bind(this)
       }
     })
   }
