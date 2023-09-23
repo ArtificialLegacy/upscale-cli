@@ -1,4 +1,4 @@
-import type { CliInstance } from '../types/cli_interface'
+import type { default as CliInstance } from '../cli_instance'
 import CliColor from '../constants/cli_color'
 
 /**
