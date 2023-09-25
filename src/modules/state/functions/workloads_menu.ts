@@ -17,8 +17,7 @@ const workloads_menu_on: StateOnFunction = async (_, cli, transition) => {
 
   switch (response) {
     case 3: {
-      transition('landing_menu')
-      break
+      return transition('landing_menu')
     }
   }
 }
