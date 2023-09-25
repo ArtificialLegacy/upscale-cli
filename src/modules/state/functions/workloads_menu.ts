@@ -8,10 +8,15 @@ import type { StateOnFunction } from 'modules/state_machine'
 const workloads_menu_on: StateOnFunction = async (_, cli, transition) => {
   cli.clear()
 
-  const response = await cli.menu('Select workload to run:', ['Back'])
+  const response = await cli.menu('Select workload to run:', [
+    'RealESRGAN-x4plus',
+    'RealESRGAN-x4plus-anime',
+    'RealESRGAN-animevideov3',
+    'Back',
+  ])
 
   switch (response) {
-    case 0: {
+    case 3: {
       transition('landing_menu')
       break
     }
