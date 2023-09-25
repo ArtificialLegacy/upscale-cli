@@ -12,7 +12,6 @@ function cli_start(clear: boolean = true): CliInstance {
 
   const intf = readline.createInterface(process.stdin, process.stdout)
 
-  // an anyonmous class is used in order to have access to private properties.
   return new CliInstance(intf)
 }
 
