@@ -1,9 +1,10 @@
-import { unlink } from 'fs'
+import fs from 'fs'
 
 import { command_run } from 'modules/cmd'
 import { State } from 'modules/state_machine'
 import type { StateOnFunction } from 'modules/state_machine'
 import { CliColor } from 'modules/cli'
+import { esrgan_remove } from 'modules/esrgan'
 
 /**
  * The on event function for the esrgan_download state.
@@ -30,11 +31,10 @@ const esrgan_download_on: StateOnFunction = async (_, cli, transition) => {
     'inherit',
   ).catch(() => false)
 
-  unlink(`${process.env.ESRGAN_FOLDER_NAME}.zip`, () => {})
+  fs.unlink(`${process.env.ESRGAN_FOLDER_NAME}.zip`, () => {})
 
   if (!unzipResult) {
-    unlink(`${global.__basedir}\\..\\esrgan-tool`, () => {})
-
+    esrgan_remove()
     return transition('esrgan_fail')
   }
 
