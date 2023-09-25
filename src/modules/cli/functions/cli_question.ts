@@ -15,7 +15,7 @@ function cli_question(
 ): Promise<string> {
   const promise = new Promise<string>((resolve, reject) => {
     intf.question(question, (answer: string) => {
-      if (options?.normalize) answer = answer.toUpperCase()
+      if (options.normalize) answer = answer.toUpperCase()
 
       if (options.accepts && !options.accepts.includes(answer)) {
         if (options.default) {
