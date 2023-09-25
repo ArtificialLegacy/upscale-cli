@@ -16,6 +16,7 @@ const landing_menu_on: StateOnFunction = async (_, cli, transition) => {
 
   switch (response) {
     case 0: {
+      transition('workloads_menu')
       break
     }
     case 1: {

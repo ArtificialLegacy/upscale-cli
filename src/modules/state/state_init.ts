@@ -6,6 +6,7 @@ import esrgan_fail from './functions/esrgan_fail'
 import esrgan_download from './functions/esrgan_download'
 import landing_menu from './functions/landing_menu'
 import esrgan_manage from './functions/esrgan_manage'
+import workloads_menu from './functions/workloads_menu'
 
 /**
  * Initialized the program's state machine and adds all the connections between states.
@@ -20,6 +21,7 @@ function state_init(cli: CliInstance): StateMachine {
       esrgan_download,
       landing_menu,
       esrgan_manage,
+      workloads_menu,
     ])
     .add_connection('esrgan_verify', 'esrgan_fail')
     .add_connection('esrgan_verify', 'esrgan_download')
@@ -30,6 +32,8 @@ function state_init(cli: CliInstance): StateMachine {
     .add_connection('esrgan_manage', 'esrgan_fail')
     .add_connection('esrgan_manage', 'esrgan_download')
     .add_connection('esrgan_manage', 'landing_menu')
+    .add_connection('landing_menu', 'workloads_menu')
+    .add_connection('workloads_menu', 'landing_menu')
 
   return state
 }

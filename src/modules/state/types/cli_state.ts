@@ -7,5 +7,6 @@ type CliState =
   | 'esrgan_fail'
   | 'landing_menu'
   | 'esrgan_manage'
+  | 'workloads_menu'
 
 export type { CliState }
