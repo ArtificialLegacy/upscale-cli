@@ -18,6 +18,8 @@ class CliMenu {
   private input: number
   private cursor: number
 
+  private dataListener: (c: string) => void
+
   constructor(question: string, options: string[], cli: CliInstance) {
     this.question = question
     this.options = options
@@ -25,6 +27,8 @@ class CliMenu {
 
     this.input = 0
     this.cursor = 0
+
+    this.dataListener = (c: string) => {}
   }
 
   /**
@@ -61,7 +65,7 @@ class CliMenu {
    * @param resolve - The cli menu promise resolve function.
    */
   private on_data(resolve: (value: number) => void) {
-    return (c: string) => {
+    const listener = (c: string) => {
       switch (c) {
         case '\u0004':
         case '\r':
@@ -71,7 +75,7 @@ class CliMenu {
         }
 
         case '\u0003': {
-          this.ctrlc()
+          this.ctrlc(resolve)
           break
         }
 
@@ -86,6 +90,9 @@ class CliMenu {
         }
       }
     }
+
+    this.dataListener = listener
+    return listener
   }
 
   /**
@@ -141,8 +148,9 @@ class CliMenu {
   /**
    * Handles the ctrl + c key press.
    */
-  private ctrlc() {
+  private ctrlc(resolve: (value: number) => void) {
     this.clean()
+    resolve(-1)
   }
 
   /**
@@ -165,7 +173,7 @@ class CliMenu {
    * Cleans up the cli menu when closing it.
    */
   private clean() {
-    process.stdin.removeAllListeners('data')
+    process.stdin.removeListener('data', this.dataListener)
     process.stdin.setRawMode(false)
     process.stdin.pause()
     this.cli.cursor_show()
