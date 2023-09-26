@@ -1,3 +1,5 @@
+import fs from 'fs/promises'
+
 import { State } from 'modules/state_machine'
 import type { StateOnFunction } from 'modules/state_machine'
 import { esrgan_x4 } from 'modules/esrgan'
@@ -13,6 +15,12 @@ const esrgan_x4_on: StateOnFunction = async (_, transition) => {
   const answer = await CliControl.question(
     'Enter the path to the image to upscale: ',
   )
+
+  if (!(await fs.stat(answer)).isFile()) {
+    CliControl.print('The given path is not a file.')
+    return transition('esrgan_x4')
+  }
+
   await esrgan_x4(answer)
 
   return transition('landing_menu')
