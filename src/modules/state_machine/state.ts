@@ -1,22 +1,18 @@
-import type { CliInstance } from 'modules/cli'
 import type { CliState } from 'modules/state'
 
 /**
  * @param from - The state that the state machine is transitioning from.
- * @param cli - The cli instance.
  * @param transition - The function to call to transition to another state.
  */
 type StateOnFunction = (
   from: CliState | null,
-  cli: CliInstance,
   transition: (to: CliState) => void,
 ) => void
 
 /**
  * @param to - The state that the state machine is transitioning to.
- * @param cli - The cli instance.
  */
-type StateExitFunction = (to: CliState, cli: CliInstance) => void
+type StateExitFunction = (to: CliState) => void
 
 /**
  * A state node containing the on and exit functions for that node.

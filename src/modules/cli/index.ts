@@ -1,3 +1,2 @@
-export { default as cli_start } from './cli_start'
 export { default as CliColor } from './constants/cli_color'
-export type { default as CliInstance } from './cli_instance'
+export { default as CliControl } from './cli_control'

@@ -5,13 +5,14 @@ import { State } from 'modules/state_machine'
 import type { StateOnFunction } from 'modules/state_machine'
 import { CliColor } from 'modules/cli'
 import { esrgan_remove } from 'modules/esrgan'
+import { CliControl } from 'modules/cli'
 
 /**
  * The on event function for the esrgan_download state.
  * Is called when the state machine transitions into this state.
  */
-const esrgan_download_on: StateOnFunction = async (_, cli, transition) => {
-  cli.print('\n-------- Downloading ESRGAN --------\n')
+const esrgan_download_on: StateOnFunction = async (_, transition) => {
+  CliControl.print('\n-------- Downloading ESRGAN --------\n')
 
   const downloadResult = await command_run(
     `curl -LO ${process.env.ESRGAN_DOWNLOAD_URL}${process.env.ESRGAN_FOLDER_NAME}.zip -fail`,
@@ -20,7 +21,7 @@ const esrgan_download_on: StateOnFunction = async (_, cli, transition) => {
 
   if (!downloadResult) return transition('esrgan_fail')
 
-  cli.print(
+  CliControl.print(
     `\n${CliColor.Green}Downloaded ESRGAN. Unzipping...${CliColor.Reset}\n`,
   )
 

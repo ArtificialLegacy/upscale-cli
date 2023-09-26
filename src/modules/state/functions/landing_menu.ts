@@ -1,14 +1,15 @@
 import { State } from 'modules/state_machine'
 import type { StateOnFunction } from 'modules/state_machine'
+import { CliControl } from 'modules/cli'
 
 /**
  * The on event function for the landing_menu state.
  * Is called when the state machine transitions into this state.
  */
-const landing_menu_on: StateOnFunction = async (_, cli, transition) => {
-  cli.clear()
+const landing_menu_on: StateOnFunction = async (_, transition) => {
+  CliControl.clear()
 
-  const response = await cli.menu('Select task to perform:', [
+  const response = await CliControl.menu('Select task to perform:', [
     'Run Workload',
     'Manage Real-ESRGAN',
     'Exit',
