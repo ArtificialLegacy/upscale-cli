@@ -1,4 +1,3 @@
-import type { CliInstance } from 'modules/cli'
 import type { CliState } from 'modules/state'
 import type State from './state'
 
@@ -10,18 +9,11 @@ class StateMachine {
   private connections: { [key in CliState]?: CliState[] } = {}
   private states: { [key in CliState]?: State }
   public current: CliState | null
-  private cliInstance: CliInstance
 
-  /**
-   * @param cli - An already created cli instance,
-   * used to give access to it in the different states by passing it as an argument.
-   */
-  constructor(cli: CliInstance) {
+  constructor() {
     this.connections = {}
     this.states = {}
     this.current = null
-
-    this.cliInstance = cli
 
     // used to make sure state machine methods stay binded when passed into state functions.
     const bindProps = Object.getOwnPropertyNames(StateMachine.prototype) as (
@@ -79,17 +71,17 @@ class StateMachine {
 
     if (this.current == null) {
       this.current = to
-      toState.on(null, this.cliInstance, this.transition)
+      toState.on(null, this.transition)
       return
     }
 
     if (!this.connections[this.current]?.includes(to))
       throw `State of id ${to} is not connected to ${this.current}`
 
-    this.states[this.current]?.exit?.(to, this.cliInstance)
+    this.states[this.current]?.exit?.(to)
     const prev = this.current
     this.current = to
-    toState.on(prev, this.cliInstance, this.transition)
+    toState.on(prev, this.transition)
   }
 }
 

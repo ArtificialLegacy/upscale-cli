@@ -1,16 +1,16 @@
 import { State, StateOnFunction } from 'modules/state_machine'
 import { esrgan_verify as verify } from 'modules/esrgan'
-import { CliColor } from 'modules/cli'
+import { CliColor, CliControl } from 'modules/cli'
 
 /**
  * The on event function for the esrgan_verify state.
  * Is called when the state machine transitions into this state.
  */
-const esrgan_verify_on: StateOnFunction = async (_, cli, transition) => {
+const esrgan_verify_on: StateOnFunction = async (_, transition) => {
   const esrganExists = verify()
   if (esrganExists) return transition('landing_menu')
 
-  const shouldDownload = await cli.question(
+  const shouldDownload = await CliControl.question(
     `${CliColor.Red}!${CliColor.Reset} Real-ESRGAN was not found. Would you like to download it? (${CliColor.Green}Y${CliColor.Reset}/${CliColor.Red}N${CliColor.Reset}) `,
     {
       accepts: ['Y', 'N'],

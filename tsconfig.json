@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "strict": true,
-    "target": "ESNext",
+    "target": "ES2022",
     "module": "NodeNext",
     "rootDirs": ["./src"],
     "typeRoots": ["./src/env.d.ts", "./node_modules/@types"],
