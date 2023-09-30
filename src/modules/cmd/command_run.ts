@@ -10,17 +10,17 @@ import type { StdioOptions } from 'child_process'
 function command_run(
   command: string,
   stdio: StdioOptions = 'inherit',
-): Promise<boolean> {
-  const promise = new Promise<boolean>((resolve, reject) => {
+): Promise<number | null> {
+  const promise = new Promise<number | null>((resolve, reject) => {
     const child = spawn(command, [], { shell: true, stdio })
 
     child.on('exit', (code) => {
-      if (code === 0) resolve(true)
-      else reject(false)
+      if (code === 0) resolve(0)
+      else reject(code)
     })
 
     child.on('error', () => {
-      reject(false)
+      reject(null)
     })
   })
 

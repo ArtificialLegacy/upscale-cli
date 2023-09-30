@@ -9,6 +9,7 @@
     "outDir": "./build/",
     "paths": {
       "modules/*": ["modules/*"],
+      "utility/*": ["utility/*"],
     },
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
