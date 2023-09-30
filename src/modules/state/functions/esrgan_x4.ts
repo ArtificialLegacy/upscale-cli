@@ -1,9 +1,8 @@
-import fs from 'fs/promises'
-
 import { State } from 'modules/state_machine'
 import type { StateOnFunction } from 'modules/state_machine'
 import { esrgan_x4 } from 'modules/esrgan'
-import { CliControl } from 'modules/cli'
+import { CliControl, CliColor } from 'modules/cli'
+import file_exists from 'utility/file_exists'
 
 /**
  * The on event function for the esrgan_x4 state.
@@ -16,9 +15,11 @@ const esrgan_x4_on: StateOnFunction = async (_, transition) => {
     'Enter the path to the image to upscale: ',
   )
 
-  if (!(await fs.stat(answer)).isFile()) {
-    CliControl.print('The given path is not a file.')
-    return transition('esrgan_x4')
+  if (!(await file_exists(answer))) {
+    CliControl.print(
+      `${CliColor.Red}! The given path is not a file.${CliColor.Reset}\n`,
+    )
+    return
   }
 
   await esrgan_x4(answer)
