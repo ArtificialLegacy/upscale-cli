@@ -24,7 +24,7 @@ const esrgan_x4_on: StateOnFunction = async (_, transition) => {
 
   await esrgan_x4(answer)
 
-  return transition('landing_menu')
+  return transition('workload_finish')
 }
 
 /**

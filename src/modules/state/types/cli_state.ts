@@ -8,6 +8,7 @@ type CliState =
   | 'landing_menu'
   | 'esrgan_manage'
   | 'workloads_menu'
+  | 'workload_finish'
   | 'esrgan_x4'
 
 export type { CliState }
