@@ -10,5 +10,6 @@ type CliState =
   | 'workloads_menu'
   | 'workload_finish'
   | 'esrgan_x4'
+  | 'esrgan_animex4'
 
 export type { CliState }

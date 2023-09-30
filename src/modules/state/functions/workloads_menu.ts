@@ -20,6 +20,9 @@ const workloads_menu_on: StateOnFunction = async (_, transition) => {
     case 0: {
       return transition('esrgan_x4')
     }
+    case 1: {
+      return transition('esrgan_animex4')
+    }
     case 3: {
       return transition('landing_menu')
     }
