@@ -2,6 +2,7 @@ import fs from 'fs/promises'
 
 import { command_run } from 'modules/cmd'
 import { CliControl } from 'modules/cli'
+import directory_exists from 'utility/directory_exists'
 
 /**
  * Runs RealESRGAN-x4plus model on the given image.
@@ -11,10 +12,10 @@ import { CliControl } from 'modules/cli'
 async function esrgan_x4(infile: string) {
   CliControl.clear()
 
-  const filename = infile.split(new RegExp('\\')).pop()
+  const filename = infile.split(/\\\//g).pop()
   CliControl.print(`Running RealESRGAN-x4plus on ${filename}`)
 
-  if (!(await fs.stat(`${global.__basedir}\\..\\outputs`)).isDirectory()) {
+  if (!(await directory_exists(`${global.__basedir}\\..\\outputs`))) {
     await fs.mkdir(`${global.__basedir}\\..\\outputs`)
   }
 
