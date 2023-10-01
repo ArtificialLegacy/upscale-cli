@@ -7,7 +7,7 @@ type CliState =
   | 'esrgan_fail'
   | 'landing_menu'
   | 'esrgan_manage'
-  | 'workloads_menu'
+  | 'workload_menu'
   | 'workload_finish'
   | 'esrgan_x4'
   | 'esrgan_animex4'

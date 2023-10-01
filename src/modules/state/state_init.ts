@@ -5,7 +5,7 @@ import esrgan_fail from './functions/esrgan_fail'
 import esrgan_download from './functions/esrgan_download'
 import landing_menu from './functions/landing_menu'
 import esrgan_manage from './functions/esrgan_manage'
-import workloads_menu from './functions/workloads_menu'
+import workload_menu from './functions/workload_menu'
 import esrgan_x4 from './functions/esrgan_x4'
 import esrgan_animex4 from './functions/esrgan_animex4'
 import workload_finish from './functions/workload_finish'
@@ -22,7 +22,7 @@ function state_init(): StateMachine {
       esrgan_download,
       landing_menu,
       esrgan_manage,
-      workloads_menu,
+      workload_menu,
       esrgan_x4,
       esrgan_animex4,
       workload_finish,
@@ -36,10 +36,10 @@ function state_init(): StateMachine {
     .add_connection('esrgan_manage', 'esrgan_fail')
     .add_connection('esrgan_manage', 'esrgan_download')
     .add_connection('esrgan_manage', 'landing_menu')
-    .add_connection('landing_menu', 'workloads_menu')
-    .add_connection('workloads_menu', 'landing_menu')
-    .add_connection('workloads_menu', 'esrgan_x4')
-    .add_connection('workloads_menu', 'esrgan_animex4')
+    .add_connection('landing_menu', 'workload_menu')
+    .add_connection('workload_menu', 'landing_menu')
+    .add_connection('workload_menu', 'esrgan_x4')
+    .add_connection('workload_menu', 'esrgan_animex4')
     .add_connection('esrgan_x4', 'workload_finish')
     .add_connection('esrgan_animex4', 'workload_finish')
     .add_connection('workload_finish', 'landing_menu')

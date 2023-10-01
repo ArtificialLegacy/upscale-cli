@@ -17,7 +17,7 @@ const landing_menu_on: StateOnFunction = async (_, transition) => {
 
   switch (response) {
     case 0: {
-      return transition('workloads_menu')
+      return transition('workload_menu')
     }
     case 1: {
       return transition('esrgan_manage')

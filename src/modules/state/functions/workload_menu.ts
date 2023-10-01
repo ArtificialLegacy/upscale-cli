@@ -3,10 +3,10 @@ import type { StateOnFunction } from 'modules/state_machine'
 import { CliControl } from 'modules/cli'
 
 /**
- * The on event function for the workloads_menu state.
+ * The on event function for the workload_menu state.
  * Is called when the state machine transitions into this state.
  */
-const workloads_menu_on: StateOnFunction = async (_, transition) => {
+const workload_menu_on: StateOnFunction = async (_, transition) => {
   CliControl.clear()
 
   const response = await CliControl.menu('Select workload to run:', [
@@ -30,6 +30,6 @@ const workloads_menu_on: StateOnFunction = async (_, transition) => {
 }
 
 /**
- * The program state for the workloads menu.
+ * The program state for the workload menu.
  */
-export default new State('workloads_menu', workloads_menu_on)
+export default new State('workload_menu', workload_menu_on)
