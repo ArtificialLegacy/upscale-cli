@@ -12,7 +12,6 @@ const workload_menu_on: StateOnFunction = async (_, transition) => {
   const response = await CliControl.menu('Select workload to run:', [
     'RealESRGAN-x4plus',
     'RealESRGAN-x4plus-anime',
-    'RealESRGAN-animevideov3',
     'Back',
   ])
 
