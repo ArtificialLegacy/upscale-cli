@@ -1,4 +1,5 @@
 import { CliControl, CliColor } from 'modules/cli'
+import directory_exists from 'utility/directory_exists'
 import file_exists from 'utility/file_exists'
 
 /**
@@ -10,9 +11,9 @@ async function workload_begin(): Promise<string> {
     'Enter the path to the image to upscale: ',
   )
 
-  if (!(await file_exists(answer))) {
+  if (!(await file_exists(answer)) && !(await directory_exists(answer))) {
     CliControl.print(
-      `${CliColor.Red}! The given path is not a file.${CliColor.Reset}\n`,
+      `${CliColor.Red}! The given path is not a file or directory.${CliColor.Reset}`,
     )
     return ''
   }
