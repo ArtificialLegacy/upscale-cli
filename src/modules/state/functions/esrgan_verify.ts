@@ -10,6 +10,8 @@ const esrgan_verify_on: StateOnFunction = async (_, transition) => {
   const esrganExists = verify()
   if (esrganExists) return transition('landing_menu')
 
+  CliControl.clear()
+
   const shouldDownload = await CliControl.question(
     `${CliColor.Red}!${CliColor.Reset} Real-ESRGAN was not found. Would you like to download it? (${CliColor.Green}Y${CliColor.Reset}/${CliColor.Red}N${CliColor.Reset}) `,
     {
