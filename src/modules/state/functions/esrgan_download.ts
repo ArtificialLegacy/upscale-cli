@@ -17,7 +17,9 @@ const esrgan_download_on: StateOnFunction = async (_, transition) => {
   const downloadResult = await command_run(
     `curl -LO ${process.env.ESRGAN_DOWNLOAD_URL}${process.env.ESRGAN_FOLDER_NAME}.zip -fail`,
     'inherit',
-  ).catch(() => false)
+  )
+    .then(() => true)
+    .catch(() => false)
 
   if (!downloadResult) return transition('esrgan_fail')
 
@@ -30,7 +32,9 @@ const esrgan_download_on: StateOnFunction = async (_, transition) => {
   const unzipResult = await command_run(
     `tar -xf ${process.env.ESRGAN_FOLDER_NAME}.zip -C ${global.__basedir}\\..\\esrgan-tool\\ --verbose`,
     'inherit',
-  ).catch(() => false)
+  )
+    .then(() => true)
+    .catch(() => false)
 
   fs.unlink(`${process.env.ESRGAN_FOLDER_NAME}.zip`, () => {})
 
