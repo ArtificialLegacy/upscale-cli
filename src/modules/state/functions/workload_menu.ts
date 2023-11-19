@@ -22,7 +22,7 @@ const workload_menu_on: StateOnFunction = async (_, transition) => {
     case 1: {
       return transition('esrgan_animex4')
     }
-    case 3: {
+    case 2: {
       return transition('landing_menu')
     }
   }
