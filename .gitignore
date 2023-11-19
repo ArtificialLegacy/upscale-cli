@@ -1,7 +1,6 @@
 node_modules
 .vscode
 
-.env
 esrgan-tool
 build
 outputs
