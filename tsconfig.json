@@ -9,13 +9,13 @@
     "outDir": "./build/",
     "paths": {
       "modules/*": ["modules/*"],
-      "utility/*": ["utility/*"],
+      "utility/*": ["utility/*"]
     },
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "incremental": false,
     "sourceMap": true,
-    "resolveJsonModule": true,
+    "resolveJsonModule": true
   }
 }
