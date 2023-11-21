@@ -12,9 +12,7 @@ async function cli_question(
   question: string,
   options: CliQuestionOptions,
 ): Promise<string> {
-  const prompt = inquirer.createPromptModule()
-
-  const answer = await prompt({
+  const answer = await inquirer.prompt({
     type: 'input',
     name: 'answer',
     message: question,

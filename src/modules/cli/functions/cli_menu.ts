@@ -7,9 +7,7 @@ import inquirer from 'inquirer'
  * @returns - The index of the option selected.
  */
 async function cli_menu(question: string, options: string[]): Promise<number> {
-  const prompt = inquirer.createPromptModule()
-
-  const answer = await prompt({
+  const answer = await inquirer.prompt({
     type: 'list',
     name: 'answer',
     message: question,
