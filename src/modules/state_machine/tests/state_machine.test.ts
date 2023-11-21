@@ -1,4 +1,5 @@
-import { stat } from 'fs'
+import { jest } from '@jest/globals'
+
 import State from '../state'
 import StateMachine from '../state_machine'
 import type { CliState } from 'modules/state'

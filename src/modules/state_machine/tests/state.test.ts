@@ -1,3 +1,5 @@
+import { jest } from '@jest/globals'
+
 import State from '../state'
 import type { StateOnFunction, StateExitFunction } from '../state'
 
