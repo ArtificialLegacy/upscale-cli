@@ -14,6 +14,7 @@ const states: CliState[] = [
   'workload_finish',
 ]
 
+// tests not that meaningful but were used to debug configuration edge cases with jest.
 describe('state_init', () => {
   it('should return a state machine', async () => {
     const state = await state_init()
