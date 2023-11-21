@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npx tsx ./src/index.ts",
     "debug": "node --require tsx/cjs ./src/index.ts --inspect",
-    "test": "jest"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "author": "",
   "license": "ISC",
