@@ -3,8 +3,10 @@ denv()
 
 import { state_init } from 'modules/state'
 
-const state = state_init()
-state.transition('esrgan_verify')
+;(async () => {
+  const state = await state_init()
+  state.transition('esrgan_verify')
+})()
 
 declare global {
   var __basedir: string

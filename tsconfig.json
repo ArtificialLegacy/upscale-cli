@@ -2,19 +2,27 @@
   "compilerOptions": {
     "strict": true,
     "target": "ES2022",
-    "module": "NodeNext",
+    "module": "ES2022",
+    "lib": ["ES2022"],
+    "moduleResolution": "node",
     "rootDirs": ["./src"],
     "typeRoots": ["./src/env.d.ts", "./node_modules/@types"],
     "baseUrl": "./src",
     "outDir": "./build/",
     "paths": {
       "modules/*": ["modules/*"],
-      "utility/*": ["utility/*"],
+      "utility/*": ["utility/*"]
     },
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "incremental": false,
     "sourceMap": true,
+    "resolveJsonModule": true,
+    "types": ["jest", "node", "@types/jest"]
+  },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
   }
 }
